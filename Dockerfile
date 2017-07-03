@@ -36,21 +36,19 @@ RUN cd /root/cs16/cstrike/addons/metamod/dlls && \
 RUN touch /root/cs16/cstrike/addons/metamod/plugins.ini && \
     sed -i '/gamedll_linux/c\gamedll_linux \"addons\/metamod\/dlls\/metamod.so\"' /root/cs16/cstrike/liblist.gam
 
+# Install amxmodx
 RUN cd /root/cs16/cstrike/ && \
     wget https://files.nscodes.com/cs16/amxmodx-1.8.2-base-linux.tar.gz && \
     tar xvfz amxmodx-1.8.2-base-linux.tar.gz
 
 RUN cd /root/cs16/cstrike/ && \
-    wget wget https://files.nscodes.com/cs16/amxmodx-1.8.2-cstrike-linux.tar.gz && \
+    wget https://files.nscodes.com/cs16/amxmodx-1.8.2-cstrike-linux.tar.gz && \
     tar xzvf amxmodx-1.8.2-cstrike-linux.tar.gz
 
-RUN cd /home/cs16/cstrike/addons/metamod && \
+RUN cd /root/cs16/cstrike/addons/metamod && \
     echo "linux addons/amxmodx/dlls/amxmodx_mm_i386.so" >> plugins.ini
 
 EXPOSE 27016/udp
-
-#RUN cd /root/cs16 && \
-    #./hlds_run -game cstrike -port 27016 +maxplayers 20 +map de_dust2
 
 WORKDIR /root/cs16
 
